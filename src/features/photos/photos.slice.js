@@ -26,6 +26,10 @@ const options = {
     addPhoto(state, action) {
       state.photos.unshift(action.payload);
     },
+    removePhoto(state, action) {
+      const photoIndex = state.photos.findIndex(({ id }) => id === action.payload);
+      state.photos.splice(photoIndex, 1);
+    },
   },
 };
 
