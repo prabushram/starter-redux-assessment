@@ -23,6 +23,9 @@ const options = {
     // Task 26: Create an `editPhotoCaption()` case reducer that updates the caption of a photo
     // Task 26 Hint: Find the photo by id in state.photos and update its caption property
     // The action payload will contain an object with { id, newCaption }
+    addPhoto(state, action) {
+      state.photos.unshift(action.payload);
+    },
   },
 };
 
