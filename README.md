@@ -23,3 +23,7 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 Runs the test suites.
+
+### AI Usage
+
+Git Hub Copilot used in syntax correction for all the functions
