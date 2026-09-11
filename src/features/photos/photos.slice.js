@@ -34,13 +34,23 @@ const options = {
       const photo = state.photos.find(({ id }) => id === action.payload);
       photo.isFavorite = !photo.isFavorite;
     },
+    editPhotoCaption(state, action) {
+      const { id, newCaption } = action.payload;
+      const photo = state.photos.find((photo) => photo.id === id);
+      photo.caption = newCaption;
+    },
   },
 };
 
 const photosSlice = createSlice(options);
 
 // Task 22 & 26: Export the `toggleFavorite()` and `editPhotoCaption()` action creators once you implement their reducers above
-export const { addPhoto, removePhoto, toggleFavorite } = photosSlice.actions;
+export const {
+  addPhoto,
+  removePhoto,
+  toggleFavorite,
+  editPhotoCaption,
+} = photosSlice.actions;
 
 export default photosSlice.reducer;
 

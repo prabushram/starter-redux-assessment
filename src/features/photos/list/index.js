@@ -7,6 +7,7 @@ import {
   // Task 24: Import the `toggleFavorite()` action creator from the photos slice
   toggleFavorite,
   // Task 28: Import the `editPhotoCaption()` action creator from the photos slice
+  editPhotoCaption,
 } from '../photos.slice';
 import './list.css';
 
@@ -27,6 +28,13 @@ export default function PhotosList() {
   }
 
   // Task 29: Create a `handleEditCaption()` function that dispatches the `editPhotoCaption()` action with id and newCaption
+  function handleEditCaption(id, currentCaption) {
+    const newCaption = window.prompt('Enter a new caption:', currentCaption);
+
+    if (newCaption && newCaption.trim()) {
+      dispatch(editPhotoCaption({ id, newCaption: newCaption.trim() }));
+    }
+  }
 
   const photosListItems = photos.map(({ id, caption, imageUrl, isFavorite }) => (
     <li key={id}>
@@ -44,7 +52,11 @@ export default function PhotosList() {
           onClick={() => handleDeleteButtonClick(id)}>
           Delete
         </button>
-        {/* Task 27: Add a button to edit caption with data-testid={`${id}-edit-button`} - for now use window.prompt() to get new caption and call handleEditCaption() */}
+        <button
+          data-testid={`${id}-edit-button`}
+          onClick={() => handleEditCaption(id, caption)}>
+          Edit Caption
+        </button>
       </div>
     </li>
   ));
